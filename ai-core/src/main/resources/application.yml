@@ -4,7 +4,7 @@ spring:
   ai:
     openai:
       # 配置模型
-      api-key: sk-1ab32dd45c5d4f51b40cb7041224c5ba
+      api-key: ${ANTHROPIC_AUTH_TOKEN}
       base-url: https://api.deepseek.com/v1
       chat:
         # 模型名称
