@@ -1,12 +1,14 @@
 package com.zn.ai.config;
 
 import com.zn.ai.constants.PromptConstants;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.memory.repository.mongo.MongoChatMemoryRepository;
+import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,6 +66,25 @@ public class ChatConfiguration {
                         new SimpleLoggerAdvisor(),
                         MessageChatMemoryAdvisor.builder(chatMemory).build()
                 )
+                .build();
+    }
+
+    /**
+     * 服务chatClient
+     */
+    @Bean
+    public ChatClient serviceChatClient(OpenAiChatModel model, ChatMemory chatMemory, SyncMcpToolCallbackProvider mcpProvider) {
+        return ChatClient
+                // 设置模型,模型配置在yml中
+                .builder(model)
+                // 设置默认系统提示词
+                .defaultSystem(PromptConstants.CUSTOMER_SERVICE_SYSTEM)
+                // 配置日志 + mongodb会话记忆
+                .defaultAdvisors(
+                        new SimpleLoggerAdvisor(),
+                        MessageChatMemoryAdvisor.builder(chatMemory).build()
+                )
+                .defaultToolCallbacks(mcpProvider.getToolCallbacks())
                 .build();
     }
 

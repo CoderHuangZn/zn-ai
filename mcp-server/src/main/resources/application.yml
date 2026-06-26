@@ -11,6 +11,8 @@ spring:
         protocol: streamable
         capabilities:
           tool: true
+        # 同步模式
+        type: sync
 
   # mysql连接配置
   datasource:
