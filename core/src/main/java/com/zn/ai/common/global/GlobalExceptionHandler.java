@@ -21,11 +21,11 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
 
 
-    @ExceptionHandler(NoHandlerFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Result<Void> handleNoHandlerFound(NoHandlerFoundException e) {
-        return Result.notFound(ResultCode.NOT_FOUND.getMessage());
-    }
+//    @ExceptionHandler(NoHandlerFoundException.class)
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    public Result<Void> handleNoHandlerFound(NoHandlerFoundException e) {
+//        return Result.notFound(ResultCode.NOT_FOUND.getMessage());
+//    }
 
     /**
      * BizException 业务异常处理
