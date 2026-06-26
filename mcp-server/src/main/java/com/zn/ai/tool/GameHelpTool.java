@@ -16,6 +16,10 @@ public class GameHelpTool {
 
     private final IGameInfoService gameInfoService;
 
+    /*
+     * @McpTool 是专门为“模型上下文协议”（MCP）设计的注解，用于在MCP服务器中注册工具，并提供MCP协议特有的高级功能.
+     * 使用该注解,直接能将该工具暴露给MCP服务,不需要向ToolCallbackProvider注册了
+     */
     @McpTool(name = "searchGameInfo", description = "根据输入条件,查询符合条件的游戏信息")
     public List<GameInfoVO> queryGame(
             @McpToolParam(description = "游戏名称", required = false) String gameName,

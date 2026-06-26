@@ -9,6 +9,9 @@ import java.math.RoundingMode;
 @Component
 public class MathTool {
 
+    /*
+        @Tool Spring AI通用的工具注解，专注于将方法定义为AI可调用的函数，可应用于多种场景
+     */
     @Tool(name = "addNumber", description = "两个数字相加,返回数字相加的和")
     public BigDecimal add(BigDecimal a, BigDecimal b) {
         return a.add(b);
