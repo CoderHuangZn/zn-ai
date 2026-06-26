@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: spring-mcp-demo
+  ai:
+    mcp:
+      server:
+        name: demo-mcp-server
+        version: 1.0.0
+        streamable-http:
+          mcp-endpoint: /api/v1/sse
+        protocol: streamable
+        capabilities:
+          tool: true
+
+  # mysql连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+
+
+server:
+  port: 8078
+
+#mp配置
+mybatis-plus:
+  configuration:
+    # 开启 SQL 日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名自动映射
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
+    com.demo.ai: debug

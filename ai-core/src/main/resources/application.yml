@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: spring-ai-demo
+  ai:
+    openai:
+      # 配置模型
+      api-key: sk-1ab32dd45c5d4f51b40cb7041224c5ba
+      base-url: https://api.deepseek.com/v1
+      chat:
+        # 模型名称
+        model: deepseek-v4-pro
+        # 模型温度,值越大，输出结果越随机
+        temperature: 0.8
+    chat:
+      # 会话记忆配置
+      memory:
+        repository:
+          # 存储到mongoDB中
+          mongo:
+            # 是否自动创建索引，默认为 true
+            create-indices: true
+            # 设置数据的过期时间（TTL），例如 24 小时，单位需符合 ISO-8601 时长格式
+            ttl: PT24H
+  # mongodb配置
+  mongodb:
+    uri: mongodb://localhost:27017/spring_ai_memory
+  # mysql连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+
+server:
+  port: 8088
+
+#mp配置
+mybatis-plus:
+  configuration:
+    # 开启 SQL 日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名自动映射
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
+    com.demo.ai: debug
