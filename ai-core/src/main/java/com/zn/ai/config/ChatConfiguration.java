@@ -85,7 +85,7 @@ public class ChatConfiguration {
                         MessageChatMemoryAdvisor.builder(chatMemory).build()
                 )
                 //  方法在 Spring AI 2.0.0 中被标记为废弃，是因为框架对工具调用的整个架构进行了重构
-                .defaultToolCallbacks(mcpProvider.getToolCallbacks())
+                //.defaultToolCallbacks(mcpProvider.getToolCallbacks())
                 .build();
     }
 
