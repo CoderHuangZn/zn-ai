@@ -12,6 +12,7 @@
     <modules>
         <module>ai-core</module>
         <module>mcp-server</module>
+        <module>core</module>
     </modules>
 
     <parent>
