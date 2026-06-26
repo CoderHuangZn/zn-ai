@@ -21,11 +21,11 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
 
 
-//    @ExceptionHandler(NoHandlerFoundException.class)
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public Result<Void> handleNoHandlerFound(NoHandlerFoundException e) {
-//        return Result.notFound(ResultCode.NOT_FOUND.getMessage());
-//    }
+    @ExceptionHandler(NoHandlerFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Result<Void> handleNoHandlerFound(NoHandlerFoundException e) {
+        return Result.notFound(ResultCode.NOT_FOUND.getMessage());
+    }
 
     /**
      * BizException 业务异常处理
@@ -68,12 +68,12 @@ public class GlobalExceptionHandler {
      *
      * @param e 异常信息
      */
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Result<?> exceptionHandler(Exception e) {
-        log.error("全局异常捕获", e);
-        return Result.fail(ResultCode.FAIL, ResultCode.FAIL.getMessage());
-    }
+//    @ExceptionHandler(Exception.class)
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    public Result<?> exceptionHandler(Exception e) {
+//        log.error("全局异常捕获", e);
+//        return Result.fail(ResultCode.FAIL, ResultCode.FAIL.getMessage());
+//    }
 
 }
 
